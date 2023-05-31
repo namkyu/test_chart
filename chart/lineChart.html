@@ -1,0 +1,62 @@
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [
+                {
+                    label: 'line1',
+                    data: [12, 19, 3, 5, 2, 4],
+                    fill: false, // 채우기 옵션
+                    borderColor: 1,
+                    tension: 0.1,
+                    yAxisID: 'y',
+                },
+                {
+                    label: 'line2',
+                    data: [13, 14, 15, 6, 7, 8],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    yAxisID: 'y1',
+                }
+            ]
+        },
+        options: {
+            responsive: true, // 반응형
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart - Multi Axis'
+                }
+            },
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                },
+            }
+        }
+    });
+</script>
